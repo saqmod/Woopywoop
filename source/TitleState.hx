@@ -118,7 +118,7 @@ class TitleState extends MusicBeatState
 	var gfDance:FlxSprite;
 	var danceLeft:Bool = false;
 	var titleText:FlxSprite;
-	var logoBl:FlxSprite = new FlxSprite().loadGraphic(Paths.image('WoopinLogo'));
+	var logoBl:FlxSprite = new FlxSprite(30, 25).loadGraphic(Paths.image('WoopinLogo'));
 	function startIntro()
 	{
 		persistentUpdate = true;
@@ -166,7 +166,8 @@ class TitleState extends MusicBeatState
 		// logo.antialiasing = FlxG.save.data.antialiasing;
 		// add(logo);
 
-		FlxTween.tween(logoBl, {y: logoBl.y + 50}, 0.62, {ease: FlxEase.quadInOut, type: PINGPONG});
+		FlxTween.tween(logoBl, {y: logoBl.y + 50}, 0.69, {ease: FlxEase.quadInOut, type: PINGPONG});
+		FlxTween.tween(logoBl, {x: logoBl.x + 15}, 2.5, {ease: FlxEase.quadInOut, type: PINGPONG});
 		// FlxTween.tween(logoBl, {"scale.x": 1.5, "scale.y": 1.5}, 0.09, {ease: FlxEase.quadOut, type: LOOPING, loopDelay: 0.4986, startDelay: 0.2});
 		// FlxTween.tween(logoBl, {"scale.x": 1, "scale.y": 1}, 0.09, {ease: FlxEase.quadOut, type: LOOPING, loopDelay: 0.4986, startDelay: 0.24});
 		FlxTween.tween(logoBl,{y: -100}, 1.4, {ease: FlxEase.expoInOut});
@@ -335,7 +336,7 @@ class TitleState extends MusicBeatState
 				
 			// 	http.request();
 			// });
-			FlxG.sound.play(Paths.music('titleShoot'), 0.7);
+			// FlxG.sound.play(Paths.music('titleShoot'), 0.7);
 		}
 
 		if (pressedEnter && !skippedIntro && initialized)
@@ -466,8 +467,9 @@ class TitleState extends MusicBeatState
 	{
 		if (!skippedIntro)
 		{
+			skippedIntro = true;
 			remove(ngSpr);
-
+			
 			FlxG.camera.flash(FlxColor.WHITE, 4);
 			remove(credGroup);
 
@@ -482,8 +484,6 @@ class TitleState extends MusicBeatState
 			// 		if (logoBl.angle == 4) 
 			// 			FlxTween.angle(logoBl, logoBl.angle, -4, 4, {ease: FlxEase.quartInOut});
 			// 	}, 0);
-
-			skippedIntro = true;
 		}
 	}
 }
