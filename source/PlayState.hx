@@ -3185,7 +3185,11 @@ class PlayState extends MusicBeatState
 
 					FlxG.sound.music.stop();
 					vocals.stop();
-					if (FlxG.save.data.scoreScreen)
+					if(SONG.song.toLowerCase() == "critical")
+					{
+						LoadingState.loadAndSwitchState(new VideoState("assets/videos/cass/vid3.webm", new MainMenuState()));
+					}
+					else if (FlxG.save.data.scoreScreen)
 					{
 						openSubState(new ResultsScreen());
 						new FlxTimer().start(1, function(tmr:FlxTimer)
@@ -3238,7 +3242,13 @@ class PlayState extends MusicBeatState
 					PlayState.SONG = Song.loadFromJson(poop, PlayState.storyPlaylist[0]);
 					FlxG.sound.music.stop();
 
-					LoadingState.loadAndSwitchState(new PlayState());
+					switch(SONG.song.toLowerCase())
+					{
+						case 'critical':
+							LoadingState.loadAndSwitchState(new VideoState("assets/videos/cass/vid2.webm", new PlayState()));
+						default:
+							LoadingState.loadAndSwitchState(new PlayState());	
+					}
 					clean();
 				}
 			}
