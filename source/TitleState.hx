@@ -290,40 +290,40 @@ class TitleState extends MusicBeatState
 			MainMenuState.firstStart = true;
 			MainMenuState.finishedFunnyMove = false;
 
-			new FlxTimer().start(2, function(tmr:FlxTimer)
-			{
-				// Get current version of Kade Engine
+			// new FlxTimer().start(2, function(tmr:FlxTimer)
+			// {
+			// 	// Get current version of Kade Engine                        //Broice - no thank you
 				
-				var http = new haxe.Http("https://raw.githubusercontent.com/KadeDev/Kade-Engine/master/version.downloadMe");
-				var returnedData:Array<String> = [];
+			// 	var http = new haxe.Http("https://raw.githubusercontent.com/KadeDev/Kade-Engine/master/version.downloadMe");
+			// 	var returnedData:Array<String> = [];
 				
-				http.onData = function (data:String)
-				{
-					returnedData[0] = data.substring(0, data.indexOf(';'));
-					returnedData[1] = data.substring(data.indexOf('-'), data.length);
-				  	if (!MainMenuState.kadeEngineVer.contains(returnedData[0].trim()) && !OutdatedSubState.leftState)
-					{
-						trace('outdated lmao! ' + returnedData[0] + ' != ' + MainMenuState.kadeEngineVer);
-						OutdatedSubState.needVer = returnedData[0];
-						OutdatedSubState.currChanges = returnedData[1];
-						FlxG.switchState(new OutdatedSubState());
-						clean();
-					}
-					else
-					{
-						FlxG.switchState(new MainMenuState());
-						clean();
-					}
-				}
+			// 	http.onData = function (data:String)
+			// 	{
+			// 		returnedData[0] = data.substring(0, data.indexOf(';'));
+			// 		returnedData[1] = data.substring(data.indexOf('-'), data.length);
+			// 	  	if (!MainMenuState.kadeEngineVer.contains(returnedData[0].trim()) && !OutdatedSubState.leftState)
+			// 		{
+			// 			trace('outdated lmao! ' + returnedData[0] + ' != ' + MainMenuState.kadeEngineVer);
+			// 			OutdatedSubState.needVer = returnedData[0];
+			// 			OutdatedSubState.currChanges = returnedData[1];
+			// 			FlxG.switchState(new OutdatedSubState());
+			// 			clean();
+			// 		}
+			// 		else
+			// 		{
+			// 			FlxG.switchState(new MainMenuState());
+			// 			clean();
+			// 		}
+			// 	}
 				
-				http.onError = function (error) {
-				  trace('error: $error');
-				  FlxG.switchState(new MainMenuState()); // fail but we go anyway
-				  clean();
-				}
+			// 	http.onError = function (error) {
+			// 	  trace('error: $error');
+			// 	  FlxG.switchState(new MainMenuState()); // fail but we go anyway
+			// 	  clean();
+			// 	}
 				
-				http.request();
-			});
+			// 	http.request();
+			// });
 			// FlxG.sound.play(Paths.music('titleShoot'), 0.7);
 		}
 
