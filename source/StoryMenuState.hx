@@ -28,7 +28,6 @@ class StoryMenuState extends MusicBeatState
 	static function weekData():Array<Dynamic>
 	{
 		return [
-			['Tutorial'],
 			['Safari', 'Critical']
 		];
 	}
@@ -361,7 +360,7 @@ class StoryMenuState extends MusicBeatState
 			PlayState.campaignScore = 0;
 			var video:MP4Handler = new MP4Handler();
 
-			if (curWeek == 1 && !isCutscene) 
+			if (curWeek == 0 && !isCutscene) 
 			{
 			    video.playMP4(Paths.video('wooper-cutscene-1'), new PlayState(),false,false,false); 
 			    isCutscene = true;

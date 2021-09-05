@@ -1,3 +1,2 @@
-Tutorial:gf:0
 Safari:woopy:1
 Critical:woopy:1
