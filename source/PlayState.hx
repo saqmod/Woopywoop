@@ -3252,6 +3252,26 @@ class PlayState extends MusicBeatState
 					clean();
 				}
 			}
+			else
+			{
+				trace('WENT BACK TO FREEPLAY??');
+
+				paused = true;
+
+				FlxG.sound.music.stop();
+				vocals.stop();
+
+				if (FlxG.save.data.scoreScreen) 
+				{
+					openSubState(new ResultsScreen());
+					new FlxTimer().start(1, function(tmr:FlxTimer)
+						{
+							inResults = true;
+						});
+				}
+				else
+					FlxG.switchState(new FreeplayState());
+			}
 		}
 	}
 
