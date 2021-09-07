@@ -1,2 +1,1 @@
-Safari:woopy:1
-Critical:woopy:1
+Tutorial:gf:0xFF9271FD
