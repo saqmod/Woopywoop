@@ -2733,7 +2733,14 @@ class PlayState extends MusicBeatState
 				transIn = FlxTransitionableState.defaultTransIn;
 				transOut = FlxTransitionableState.defaultTransOut;
 
-				MusicBeatState.switchState(new StoryMenuState());
+				if(SONG.song.toLowerCase() == "critical")
+				{
+					LoadingState.loadAndSwitchState(new VideoState("assets/videos/cass/vid3.webm", new StoryMenuState()));
+				}
+				else
+				{
+					MusicBeatState.switchState(new StoryMenuState());
+				}
 
 				// if ()
 				StoryMenuState.weekUnlocked[Std.int(Math.min(storyWeek + 1, StoryMenuState.weekUnlocked.length - 1))] = true;
@@ -2782,7 +2789,13 @@ class PlayState extends MusicBeatState
 						LoadingState.loadAndSwitchState(new PlayState());
 					});
 				} else {
-					LoadingState.loadAndSwitchState(new PlayState());
+					switch(SONG.song.toLowerCase())
+					{
+						case 'critical':
+							LoadingState.loadAndSwitchState(new VideoState("assets/videos/cass/vid2.webm", new PlayState()));
+						default:
+							LoadingState.loadAndSwitchState(new PlayState());	
+					}
 				}
 			}
 		}

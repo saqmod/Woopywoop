@@ -329,10 +329,18 @@ class StoryMenuState extends MusicBeatState
 			PlayState.storyWeek = curWeek;
 			PlayState.campaignScore = 0;
 			PlayState.campaignMisses = 0;
+
 			new FlxTimer().start(1, function(tmr:FlxTimer)
 			{
-				LoadingState.loadAndSwitchState(new PlayState(), true);
-				FreeplayState.destroyFreeplayVocals();
+				switch(PlayState.SONG.song.toLowerCase())
+				{
+					case 'safari':
+						LoadingState.loadAndSwitchState(new VideoState("assets/videos/cass/vid1.webm", new PlayState()));
+						FreeplayState.destroyFreeplayVocals();
+					default:
+						LoadingState.loadAndSwitchState(new PlayState(), true);
+						FreeplayState.destroyFreeplayVocals();
+				}
 			});
 		}
 	}
