@@ -123,7 +123,7 @@ class TitleState extends MusicBeatState
 		#end
 	}
 
-	var logoBl:FlxSprite = new FlxSprite(30, 25).loadGraphic(Paths.image('WoopinLogo'));
+	var logoBl:FlxSprite;
 	var gfDance:FlxSprite;
 	var danceLeft:Bool = false;
 	var titleText:FlxSprite;
@@ -170,6 +170,7 @@ class TitleState extends MusicBeatState
 		// bg.updateHitbox();
 		add(bg);
 
+		logoBl = new FlxSprite(30, 25).loadGraphic(Paths.image('WoopinLogo'));
 		logoBl.antialiasing = ClientPrefs.globalAntialiasing;
 		//logoBl.animation.addByPrefix('bump', 'logo bumpin', 24, false);
 		logoBl.updateHitbox();
