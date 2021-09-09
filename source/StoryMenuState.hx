@@ -171,9 +171,11 @@ class StoryMenuState extends MusicBeatState
 		leftArrow.animation.addByPrefix('press', "arrow push left");
 		leftArrow.animation.play('idle');
 		leftArrow.antialiasing = ClientPrefs.globalAntialiasing;
+		leftArrow.visible = false;
 		difficultySelectors.add(leftArrow);
 
 		sprDifficultyGroup = new FlxTypedGroup<FlxSprite>();
+		sprDifficultyGroup.visible = false;
 		add(sprDifficultyGroup);
 
 		
@@ -182,6 +184,7 @@ class StoryMenuState extends MusicBeatState
 			sprDifficulty.x += (308 - sprDifficulty.width) / 2;
 			sprDifficulty.ID = i;
 			sprDifficulty.antialiasing = ClientPrefs.globalAntialiasing;
+			sprDifficulty.visible = false;
 			sprDifficultyGroup.add(sprDifficulty);
 		}
 		changeDifficulty();
@@ -194,6 +197,7 @@ class StoryMenuState extends MusicBeatState
 		rightArrow.animation.addByPrefix('press', "arrow push right", 24, false);
 		rightArrow.animation.play('idle');
 		rightArrow.antialiasing = ClientPrefs.globalAntialiasing;
+		rightArrow.visible = false;
 		difficultySelectors.add(rightArrow);
 
 		add(bgSprite);
