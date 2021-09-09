@@ -651,6 +651,14 @@ class PlayState extends MusicBeatState
 		gf.scrollFactor.set(0.95, 0.95);
 		gfGroup.add(gf);
 
+		if(SONG.player2 == "woopy")
+		{
+			var shinyNo = FlxG.random.int(1,100);
+			trace("shinyNo: " + shinyNo);
+			if(shinyNo == 100)
+				SONG.player2 = "woopyShiny";
+		}
+
 		dad = new Character(DAD_X, DAD_Y, SONG.player2);
 		dad.x += dad.positionArray[0];
 		dad.y += dad.positionArray[1];
