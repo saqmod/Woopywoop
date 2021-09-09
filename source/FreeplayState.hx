@@ -24,18 +24,13 @@ class FreeplayState extends MusicBeatState
 	//Character head icons for your songs
 	static var songsHeads:Array<Dynamic> = [
 		['woopy'],							//Week 1
-		['spooky', 'spooky', 'monster'],	//Week 2
-		['pico'],							//Week 3
-		['mom'],							//Week 4
-		['parents', 'parents', 'monster'],	//Week 5
-		['senpai', 'senpai', 'spirit']		//Week 6
 	];
 
 	var songs:Array<SongMetadata> = [];
 
 	var selector:FlxText;
 	private static var curSelected:Int = 0;
-	private static var curDifficulty:Int = 1;
+	private static var curDifficulty:Int = 0;
 
 	var scoreBG:FlxSprite;
 	var scoreText:FlxText;
@@ -270,7 +265,7 @@ class FreeplayState extends MusicBeatState
 			var poop:String = Highscore.formatSong(songLowercase, curDifficulty);
 			if(!OpenFlAssets.exists(Paths.json(songLowercase + '/' + poop))) {
 				poop = songLowercase;
-				curDifficulty = 1;
+				curDifficulty = 0;
 				trace('Couldnt find file');
 			}
 			trace(poop);
@@ -311,8 +306,8 @@ class FreeplayState extends MusicBeatState
 		curDifficulty += change;
 
 		if (curDifficulty < 0)
-			curDifficulty = CoolUtil.difficultyStuff.length-1;
-		if (curDifficulty >= CoolUtil.difficultyStuff.length)
+			curDifficulty = 0;
+		if (curDifficulty >= 0)
 			curDifficulty = 0;
 
 		#if !switch
